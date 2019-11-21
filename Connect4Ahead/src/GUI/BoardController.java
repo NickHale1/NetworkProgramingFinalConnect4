@@ -70,22 +70,36 @@ public class BoardController extends Application implements Initializable{
 	    @FXML Rectangle Box36;
 	    @FXML Rectangle Box46;
 	    @FXML Rectangle Box56;
+	    
+	    //test button, will remove
 	    @FXML Button update;
 	
-	    Queue<Rectangle> rectangleBoxes = new LinkedList<Rectangle>();
 	    
+	    //Buttons to control placing pieces
+	    @FXML Button place0;
+	    @FXML Button place1;
+	    @FXML Button place2;
+	    @FXML Button place3;
+	    @FXML Button place4;
+	    @FXML Button place5;
+	    @FXML Button place6;
+	    
+	    Queue<Rectangle> rectangleBoxes = new LinkedList<Rectangle>();
+	    static Connect4User user;
+	    static boolean host;
 	    
        public static void main(String [] args) throws Exception 
        {
     	   
     	   Scanner in = new Scanner(System.in);
-    	   Connect4User user;
+    	   
     	   String message;
     	   System.out.println("Host or Connect?");
     	   if((message = in.nextLine()).equals("host")) {
     		   System.out.println("What port are you hosting the game on? ");
     		   int port = in.nextInt();
     		   user = new Connect4Host(port);
+    		   host = true;
     		   host((Connect4Host) user);
     	   }
     	   else {
@@ -94,6 +108,7 @@ public class BoardController extends Application implements Initializable{
     		   System.out.println("What is the port?");
     		   int port = in.nextInt();
     		   user = new Connect4ConnectedUser(message, port);
+    		   host = false;
     		   connected((Connect4ConnectedUser) user);
     	   }
     	   
@@ -179,6 +194,28 @@ public class BoardController extends Application implements Initializable{
 				
 			}
 		});
+		place0.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				//check to see if it is the client or host
+				if(host)
+				{
+					//makemoves
+					//if moves done
+					//send moves
+					//wait to receive moves and make buttons unusable
+					// get moves from other user
+					//upadte board state
+				}else 
+				{
+					//makemoves if Available
+					//send moves
+					//update board state
+					//wait to receive moves and make buttons unusable
+				}
+			}	//end handle
+		});
+		
 		
 		
 		
