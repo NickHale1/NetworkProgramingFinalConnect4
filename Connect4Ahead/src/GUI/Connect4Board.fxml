@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.shape.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="403.0" prefWidth="560.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.BoardController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="593.0" prefWidth="571.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.BoardController">
    <children>
-      <HBox layoutY="1.0" prefHeight="346.0" prefWidth="453.0">
+      <HBox layoutX="38.0" layoutY="151.0" prefHeight="346.0" prefWidth="453.0">
          <children>
             <VBox prefHeight="355.0" prefWidth="68.0">
                <children>
@@ -81,6 +82,18 @@
             </VBox>
          </children>
       </HBox>
-      <Button fx:id="update" layoutX="482.0" layoutY="190.0" mnemonicParsing="false" text="Update" />
+      <Button fx:id="update" layoutX="516.0" layoutY="281.0" mnemonicParsing="false" text="Update" />
+      <Button fx:id="place0" layoutX="47.0" layoutY="108.0" mnemonicParsing="false" text="Place" />
+      <Button fx:id="place1" layoutX="113.0" layoutY="108.0" mnemonicParsing="false" text="Place" />
+      <Button fx:id="place2" layoutX="180.0" layoutY="108.0" mnemonicParsing="false" text="Place" />
+      <Button fx:id="place3" layoutX="251.0" layoutY="108.0" mnemonicParsing="false" text="Place" />
+      <Button fx:id="place4" layoutX="319.0" layoutY="108.0" mnemonicParsing="false" text="Place" />
+      <Button fx:id="place5" layoutX="385.0" layoutY="108.0" mnemonicParsing="false" text="Place" />
+      <Button fx:id="place6" layoutX="453.0" layoutY="108.0" mnemonicParsing="false" text="Place" />
+      <Text layoutX="81.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Place 5 Pieces!">
+         <font>
+            <Font name="Bodoni MT Black" size="45.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
