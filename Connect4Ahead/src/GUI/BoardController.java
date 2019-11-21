@@ -20,6 +20,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
@@ -84,13 +85,21 @@ public class BoardController extends Application implements Initializable{
 	    @FXML Button place5;
 	    @FXML Button place6;
 	    
+	    //buttons for launch screen and corresponding text fields
+	    @FXML Button hostBtn;
+	    @FXML Button connectBtn;
+	    @FXML TextField port;
+	    @FXML TextField address;
+	    
+	    @FXML Button Start;
+	    
 	    Queue<Rectangle> rectangleBoxes = new LinkedList<Rectangle>();
 	    static Connect4User user;
 	    static boolean host;
 	    
        public static void main(String [] args) throws Exception 
        {
-    	   
+    	   /*
     	   Scanner in = new Scanner(System.in);
     	   
     	   String message;
@@ -111,8 +120,8 @@ public class BoardController extends Application implements Initializable{
     		   host = false;
     		   connected((Connect4ConnectedUser) user);
     	   }
-    	   
-    	   //launch(args);
+    	   */
+    	   launch(args);
     	   
               
        }
@@ -187,6 +196,7 @@ public class BoardController extends Application implements Initializable{
 						boxes[i][k].setFill(Color.RED);
 					}
 				}
+				update.setDisable(true);
 				
 				
 				
@@ -206,6 +216,7 @@ public class BoardController extends Application implements Initializable{
 					//wait to receive moves and make buttons unusable
 					// get moves from other user
 					//upadte board state
+					place0.setDisable(true);
 				}else 
 				{
 					//makemoves if Available
@@ -215,6 +226,16 @@ public class BoardController extends Application implements Initializable{
 				}
 			}	//end handle
 		});
+		/*
+		hostBtn.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				port.setVisible(true);
+				address.setVisible(true);
+				
+			}	//end handle
+		});
+		*/
 		
 		
 		
