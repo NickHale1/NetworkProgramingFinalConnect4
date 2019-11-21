@@ -72,10 +72,12 @@ public class BoardController extends Application implements Initializable{
 	    @FXML Rectangle Box56;
 	    @FXML Button update;
 	
-    Queue<Rectangle> rectangleBoxes = new LinkedList<Rectangle>();
+	    Queue<Rectangle> rectangleBoxes = new LinkedList<Rectangle>();
+	    
+	    
        public static void main(String [] args) throws Exception 
        {
-    	   /*
+    	   
     	   Scanner in = new Scanner(System.in);
     	   Connect4User user;
     	   String message;
@@ -94,8 +96,8 @@ public class BoardController extends Application implements Initializable{
     		   user = new Connect4ConnectedUser(message, port);
     		   connected((Connect4ConnectedUser) user);
     	   }
-    	   */
-    	   launch(args);
+    	   
+    	   //launch(args);
     	   
               
        }
