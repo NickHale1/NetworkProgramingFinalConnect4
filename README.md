@@ -18,6 +18,6 @@ List all the features of your application in the order of priority.
 ## Team members
 
 * Nick Hale, Game Logic Designer
-* Quinn Montgomery, Network architecture
-* Ian Seto, GUI Design
+* Quinn Montgomery, Network architecture/GUI Design
+* Ian Seto, GUI Design/Network architecture
 
