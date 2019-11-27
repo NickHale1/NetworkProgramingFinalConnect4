@@ -2,10 +2,8 @@ package GUI;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
@@ -18,14 +16,15 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class BoardController extends Application implements Initializable{
@@ -99,35 +98,193 @@ public class BoardController extends Application implements Initializable{
 	    
        public static void main(String [] args) throws Exception 
        {
-    	   /*
-    	   Scanner in = new Scanner(System.in);
     	   
-    	   String message;
-    	   System.out.println("Host or Connect?");
-    	   if((message = in.nextLine()).equals("host")) {
-    		   System.out.println("What port are you hosting the game on? ");
-    		   int port = in.nextInt();
-    		   user = new Connect4Host(port);
-    		   host = true;
-    		   host((Connect4Host) user);
-    	   }
-    	   else {
-    		   System.out.println("What is the adress?");
-    		   message = in.nextLine();
-    		   System.out.println("What is the port?");
-    		   int port = in.nextInt();
-    		   user = new Connect4ConnectedUser(message, port);
-    		   host = false;
-    		   connected((Connect4ConnectedUser) user);
-    	   }
-    	   */
+    	   
     	   launch(args);
+    	   	   
+//    	   Scanner in = new Scanner(System.in);
+//    	   
+//    	   String message;
+//    	   System.out.println("Host or Connect?");
+//    	   if((message = in.nextLine()).equals("host")) {
+//    		   System.out.println("What port are you hosting the game on? ");
+//    		   int port = in.nextInt();
+//    		   user = new Connect4Host(port);
+//    		   host = true;
+//    		   host((Connect4Host) user);
+//    	   }
+//    	   else {
+//    		   System.out.println("What is the adress?");
+//    		   message = in.nextLine();
+//    		   System.out.println("What is the port?");
+//    		   int port = in.nextInt();
+//    		   user = new Connect4ConnectedUser(message, port);
+//    		   host = false;
+//    		   connected((Connect4ConnectedUser) user);
+//    	   }
+//    	   
+//    	   launch(args);
     	   
               
        }
    
     
-    
+    public void start(Stage PS) {
+    	
+    	final int width = 400;
+    	final int hight = 200;
+    	final Pane root = new Pane();
+    	
+    	final Button Btnhost = new Button();
+    	final Button Btnjoin = new Button();
+    	final Button Btnstart = new Button();
+    	
+    	final TextField Txtip = new TextField();
+    	Txtip.setLayoutX(width/2);
+    	Txtip.setLayoutY(hight/6);
+    	Txtip.setVisible(false);
+    	
+    	final TextField Txtport = new TextField();
+    	Txtport.setLayoutX(width/2);
+    	Txtport.setLayoutY(hight/3);
+    	Txtport.setVisible(false);
+    	
+    	final Label Lbip = new Label("enter the ip of the host");
+    	Lbip.setLayoutX(width/7);
+    	Lbip.setLayoutY(hight/6);
+    	Lbip.setVisible(false);
+    	
+    	final Label Lbport = new Label("enter the port for the host");
+    	Lbport.setLayoutX(width/7);
+    	Lbport.setLayoutY(hight/3);
+    	Lbport.setVisible(false);
+    	
+    	PS.setTitle("Login");
+    	
+    	
+    	//host button
+    	
+    	Btnhost.setAlignment(Pos.CENTER);
+    	Btnhost.setText("host a game");
+    	Btnhost.setLayoutX(width/3);
+    	Btnhost.setLayoutY(hight/6);
+    	Btnhost.setOnAction(new EventHandler<ActionEvent>() {
+    		
+    		public void handle(ActionEvent event) {
+    			
+    			//host a game
+    			
+    			Btnhost.setVisible(false);
+    			Btnjoin.setVisible(false);
+    			
+    			Btnstart.setVisible(true);
+    			Txtip.setVisible(true);
+    			Txtport.setVisible(true);
+    			Lbip.setVisible(true);
+    			Lbport.setVisible(true);
+    			Lbip.setText("How many moves per turn? ");
+    			
+    			host = true;
+    			
+    		}
+    		
+		});
+    	
+    	
+    	Btnjoin.setAlignment(Pos.CENTER);
+    	Btnjoin.setText("Join a game");
+    	Btnjoin.setLayoutX(width/3);
+    	Btnjoin.setLayoutY(hight/3);
+    	Btnjoin.setOnAction(new EventHandler<ActionEvent>() {
+    		
+    		public void handle(ActionEvent event) {
+    			
+    			//join a game
+    			
+    			Btnhost.setVisible(false);
+    			Btnjoin.setVisible(false);
+    			
+    			Btnstart.setVisible(true);
+    			Txtip.setVisible(true);
+    			Txtport.setVisible(true);
+    			Lbip.setVisible(true);
+    			Lbport.setVisible(true);
+    			
+    			host = false;
+    			
+    		}
+    		
+		});
+    	
+    	
+    	Btnstart.setAlignment(Pos.CENTER);
+    	Btnstart.setText("Start");
+    	Btnstart.setLayoutX(width/3);
+    	Btnstart.setLayoutY(hight/1.2);
+    	Btnstart.setVisible(false);
+    	Btnstart.setOnAction(new EventHandler<ActionEvent>() {
+    		
+    		public void handle(ActionEvent event) {
+    			
+    			//start the game
+    			
+    			if(host) {
+    				try {
+    					
+    				user = new Connect4Host(Integer.parseInt(Txtport.getText()));
+    				
+    				int mvNum = Integer.parseInt(Txtip.getText());
+    				
+    				host((Connect4Host) user, mvNum);
+    				
+    				} catch (Exception e){
+    				user = null;	
+    				}
+    				
+    			} else {
+    				
+    				
+    				try {
+    				user = new Connect4ConnectedUser(Txtip.getText(),Integer.parseInt(Txtport.getText()));
+    				
+    				connected((Connect4ConnectedUser) user);
+    				
+    				} catch (Exception e){
+    				user = null;	
+    				}
+    				
+    			}
+    			
+    			
+    			PS.hide();
+    			
+    		}
+    		
+		});
+    	
+    	root.getChildren().add(Btnhost);
+    	root.getChildren().add(Btnjoin);
+    	root.getChildren().add(Btnstart);
+    	root.getChildren().add(Txtport);
+    	root.getChildren().add(Txtip);
+    	root.getChildren().add(Lbport);
+    	root.getChildren().add(Lbip);
+    	
+//    	root.getChildren().addAll(
+//    			
+//    			Btnhost,
+//    			Btnjoin,
+//    			Btnstart,
+//    			Txtip, 
+//    			Txtip, 
+//    			Lbhost, 
+//    			Lbip
+//    			
+//    			);
+    	
+    	PS.setScene(new Scene(root, width, hight));
+    	PS.show();
+    }
     
 
 	private static void connected(Connect4ConnectedUser user) throws Exception, Exception {
@@ -156,10 +313,12 @@ public class BoardController extends Application implements Initializable{
 
 
 
-	private static void host(Connect4Host user) throws IOException, ClassNotFoundException {
+	private static void host(Connect4Host user, int numMoves) throws IOException, ClassNotFoundException {
 		Scanner in = new Scanner(System.in);
-		System.out.println("How many moves per turn? ");
-		int numMoves = in.nextInt();
+//		System.out.println("How many moves per turn? ");
+//		int numMoves = in.nextInt();
+		
+		
 		int[] playerMoves = new int [numMoves];
 		user.setNumMoves(numMoves);
 		do{
@@ -295,8 +454,8 @@ public class BoardController extends Application implements Initializable{
 
 
 
-	@Override
-	public void start(Stage primaryStage) throws Exception {
+	//@Override
+	public void startGame(Stage primaryStage) throws Exception {
 		Stage window;
 		window = primaryStage;
 		window.setTitle("Connect4Ahead");
