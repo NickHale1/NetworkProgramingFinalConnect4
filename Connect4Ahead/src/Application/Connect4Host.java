@@ -1,17 +1,20 @@
 package Application;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class Connect4Host extends Connect4User{
-	ServerSocket gameSocket;
+public class Connect4Host implements Connect4User{
+	private ServerSocket gameSocket;
 	public Connect4Ahead game;
-	Socket connectedUser;
-	ObjectOutputStream serverOut;
-	ObjectInputStream serverIn;
+	private Socket connectedUser;
+	private ObjectOutputStream serverOut;
+	private ObjectInputStream serverIn;
+	public int[] opponentsMoves;
+	public int[] yourMoves;
 	
 	public Connect4Host (int port) throws IOException{
 		
@@ -23,6 +26,7 @@ public class Connect4Host extends Connect4User{
 		serverIn = new ObjectInputStream(connectedUser.getInputStream());
 		System.out.println("Other User connected, Starting Game");
 		
+		
 	}
 
 	public void setNumMoves(int numMoves) throws IOException {
@@ -31,7 +35,8 @@ public class Connect4Host extends Connect4User{
 		//serverOut.flush();
 		
 	}
-
+	
+	@Override
 	public void makeMoves(int [] playerMoves) throws IOException {
 		serverOut.reset();
 		game.populateArray(playerMoves);
@@ -39,12 +44,15 @@ public class Connect4Host extends Connect4User{
 		
 		
 	}
-
+	
+	@Override
 	public void recieveMoves() throws ClassNotFoundException, IOException {
 		int [] otherPlayerMoves = (int[]) serverIn.readObject();
 		game.populateArray(otherPlayerMoves);
 		System.out.println("Other player Moves Recieved!");
 		
 	}
-
+	
 }
+
+

@@ -7,28 +7,13 @@ import java.util.Scanner;
 public class Connect4Ahead {
 	public  int[][]gameBoard = new int[6][7];
 	public  int piecesPerPlayer;
-	int[] pieces;
-	int topIndex= 0;
+	public int[] pieces;
+	public int topIndex= 0;
 	
 	
 	public static void main(String [] args)
 	{
 		
-		
-		
-		/*
-		while(gameOver == 0) 
-		{
-			//populateQueue will be test method for testing the game
-			//when game is working the queue will be populated by the two users
-			populateQueue(pieces);
-			if(!placeThePiecesInTheQueue(pieces)) {
-				gameOver = 1;
-			}
-			printBoard();
-			
-		}
-		*/
 	}
 
 	public void populateArray(int[] playerMoves) {
@@ -37,35 +22,6 @@ public class Connect4Ahead {
 			this.pieces[topIndex] = move;
 			this.topIndex++;
 		}
-		System.out.println("Current pieces in game array");
-		for(int piece: this.pieces) {
-			System.out.println(piece);
-			}
-		/*
-		Scanner in = new Scanner(System.in);
-		ArrayList<Integer> player1Pieces = new ArrayList<Integer>();
-		System.out.println("Player 1 select your " + piecesPerPlayer + " pieces,(Columns 0-6): ");
-		while(player1Pieces.size() < piecesPerPlayer)
-		{
-			player1Pieces.add(in.nextInt());
-		}
-		for(int i = 0; i < 20; i++)
-		{
-			System.out.println("Stop cheating Garett");
-		}
-		ArrayList<Integer> player2Pieces = new ArrayList<Integer>();
-		System.out.println("Player 2 select your " + piecesPerPlayer + " pieces,(Columns 0-6): ");
-		while(player2Pieces.size() < piecesPerPlayer)
-		{
-			player2Pieces.add(in.nextInt());
-		}
-		
-		for(int i = 0; i < piecesPerPlayer; i ++)
-		{
-			pieces.add(player1Pieces.get(i));
-			pieces.add(player2Pieces.get(i));
-		}
-		*/
 		
 	}
 
@@ -81,27 +37,8 @@ public class Connect4Ahead {
 		
 	}
 
-	public boolean placeThePiecesInTheQueue() {
-		/*
-		for(int piece: this.pieces) {
-			System.out.println(piece);
-		}
-		int playerTurn = 1;
-		for(int piece: this.pieces) {
-			if(!placePiece(playerTurn, piece))
-			{
-				System.out.println("Placed piece into full column.");
-			}
-			int winningPlayer = 0;
-			winningPlayer = playerWon();
-			if(playerWon() !=0) {
-				System.out.println("Player " + playerWon() + " won!");
-				this.printBoard();
-				return false;
-			}
-			playerTurn = (playerTurn == 1) ?2 : 1;
-		}
-		 */
+	public boolean placePiecesOnBoard() {
+		
 		for(int i = 0; i < this.piecesPerPlayer; i++)
 		{
 			int playerTurn = 1;
@@ -134,26 +71,7 @@ public class Connect4Ahead {
 		this.printBoard();
 		return true;
 		
-		/*
-		while(!pieces.isEmpty())
-		{
-			int piece = (int) pieces.poll();
-			if(!placePiece(playerTurn, piece))
-			{
-				System.out.println("Placed piece into full column.");
-				
-				
-			}
-			int winningPlayer = 0;
-			winningPlayer = playerWon();
-			if(winningPlayer != 0) {
-				System.out.println("Player " + winningPlayer + " won!");
-				return false;
-			}
-			playerTurn = (playerTurn == 1) ?2 : 1;
-		}
-		return true;
-		*/
+		
 		
 		
 	}
