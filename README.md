@@ -25,7 +25,7 @@ List all the features of your application in the order of priority.
 3. Once the game is set up, you can play through the IDE's console.
 
 ## Demo Video
-- add link
+- https://youtu.be/rZcQ2mf1EXc
 
 ## Team members
 
