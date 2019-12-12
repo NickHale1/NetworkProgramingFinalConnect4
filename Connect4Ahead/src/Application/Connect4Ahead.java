@@ -3,7 +3,11 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
-
+/**
+ * Connect4Ahead class that hold all the game data and logic for a game of connect 4 ahead
+ * @author Nick Hale
+ *
+ */
 public class Connect4Ahead {
 	public  int[][]gameBoard = new int[6][7];
 	public  int piecesPerPlayer;
@@ -15,7 +19,10 @@ public class Connect4Ahead {
 	{
 		
 	}
-
+	/**
+	 * add players moves to the queue
+	 * @param playerMoves
+	 */
 	public void populateArray(int[] playerMoves) {
 		for(int move: playerMoves)
 		{
@@ -24,7 +31,9 @@ public class Connect4Ahead {
 		}
 		
 	}
-
+	/** 
+	 * print the current state of the game board
+	 */
 	public void printBoard() {
 		for(int i = 0; i < 6; i ++)
 		{
@@ -36,7 +45,10 @@ public class Connect4Ahead {
 		}
 		
 	}
-
+	/**
+	 * places the pieces in the queue onto the board
+	 * @return true if the game is not done, false when someone has won
+	 */
 	public boolean placePiecesOnBoard() {
 		
 		for(int i = 0; i < this.piecesPerPlayer; i++)
@@ -75,7 +87,12 @@ public class Connect4Ahead {
 		
 		
 	}
-
+	/** 
+	 * places an individual piece into the board
+	 * @param playerTurn 1 or 2 depending on if it is player 1 or 2's piece
+	 * @param piece the column where the piece is being played
+	 * @return
+	 */
 	public boolean placePiece(int playerTurn, int piece) {
 		for(int i = 5; i > -1; i--)
 		{
@@ -88,7 +105,10 @@ public class Connect4Ahead {
 		return false;
 		
 	}
-	
+	/**
+	 * Check to see if a player has made 4 pieces in a row
+	 * @return 1 if player 1 wins, 2 if player 2 wins, and 0 if no one has won
+	 */
 	public int playerWon()
 	{
 		int currentPlayer = 0;
@@ -138,7 +158,10 @@ public class Connect4Ahead {
 		
 		return 0;
 	}
-
+	/**
+	 * sets the number of moves per turn for the game
+	 * @param numMoves the number of moves per turn
+	 */
 	public void setNumMoves(int numMoves) {
 		this.piecesPerPlayer = numMoves;
 		this.pieces = new int[this.piecesPerPlayer * 2];

@@ -6,7 +6,11 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-
+/**
+ * 
+ * @author Nick Hale
+ * Host object that hold that data and stream necesary to host a game of connect 4 ahead
+ */
 public class Connect4Host implements Connect4User{
 	private ServerSocket gameSocket;
 	public Connect4Ahead game;
@@ -15,7 +19,11 @@ public class Connect4Host implements Connect4User{
 	private ObjectInputStream serverIn;
 	public int[] opponentsMoves;
 	public int[] yourMoves;
-	
+	/**
+	 * Contructor for a Connect4Host object
+	 * @param port the port that the game will be hosted on
+	 * @throws IOException
+	 */
 	public Connect4Host (int port) throws IOException{
 		
 		gameSocket = new ServerSocket(port);
@@ -28,7 +36,12 @@ public class Connect4Host implements Connect4User{
 		
 		
 	}
-
+	
+	/**
+	 *  sets the number of moves for the game and sends to opponent
+	 * @param numMoves the number of moves per turn
+	 * @throws IOException
+	 */
 	public void setNumMoves(int numMoves) throws IOException {
 		game.setNumMoves(numMoves);
 		serverOut.writeObject(numMoves);

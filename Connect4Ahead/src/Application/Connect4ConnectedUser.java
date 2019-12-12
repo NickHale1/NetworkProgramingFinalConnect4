@@ -5,13 +5,24 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
-
+/**
+ * Object that hold connection data and stream for a connected user of connect4ahead
+ * @author Nick Hale
+ *
+ */
 public class Connect4ConnectedUser implements Connect4User{
 	private Socket gameSocket;
 	public Connect4Ahead game;
 	private ObjectInputStream clientIn;
 	private ObjectOutputStream clientOut;
-	
+	/**
+	 * Constructor for a Connect4ConnectedUser object
+	 * @param adress ip address of the host player
+	 * @param port port that game is hosted on
+	 * @throws UnknownHostException
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	public Connect4ConnectedUser (String adress, int port) throws UnknownHostException, IOException, ClassNotFoundException {
 		gameSocket = new Socket(adress, port);
 		clientIn = new ObjectInputStream(gameSocket.getInputStream());
@@ -21,7 +32,12 @@ public class Connect4ConnectedUser implements Connect4User{
 		
 		
 	}
-
+	/**
+	 * recieve the moves per turn from host and set the parameter for game board
+	 * @return returns the number of moves per turn
+	 * @throws Exception
+	 * @throws IOException
+	 */
 	public int setNumMoves() throws Exception, IOException {
 		int numMoves = (int) clientIn.readObject();
 		//System.out.println(numMoves);
