@@ -26,7 +26,13 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-
+/**
+ * 
+ * @author Quinn Montgomery
+ * @author Nick Hale
+ * @author Ian Seto
+ * Driver class for connect 4 ahead
+ */
 public class BoardController extends Application implements Initializable{
 	    
 	    
@@ -39,7 +45,6 @@ public class BoardController extends Application implements Initializable{
     	   launch(args);    
        }
    
-    
     public void start(Stage PS) {
     	
     	final int width = 400;
@@ -198,7 +203,13 @@ public class BoardController extends Application implements Initializable{
     	PS.show();
     }
     
-
+    /**
+     *  
+     * The game loop for a connected player
+     * @param user the user object that hold the connection and game data
+     * @throws Exception
+     * @throws Exception
+     */
 	private static void connected(Connect4ConnectedUser user) throws Exception, Exception {
 		int numMoves = user.setNumMoves();
 		int [] playerMoves = new int [numMoves];
@@ -225,7 +236,13 @@ public class BoardController extends Application implements Initializable{
 		
 	}
 
-
+	/**
+	 * The game loop for the host player
+	 * @param user the user object that hold connection and game data
+	 * @param numMoves
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	private static void host(Connect4Host user, int numMoves) throws IOException, ClassNotFoundException {
 		Scanner in = new Scanner(System.in);
 //		System.out.println("How many moves per turn? ");
